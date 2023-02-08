@@ -27,12 +27,15 @@ const onClickStartChangeBgColor = () => {
     inlineBodyBackgroundColor(getRandomHexColor());
   }, 1000);
   disableBtn(refs.start);
+  activateBtn(refs.stop);
 };
 
 const onClickStopChangeBgColor = () => {
   activateBtn(refs.start);
+  disableBtn(refs.stop);
   clearInterval(intervalId);
 };
 
+disableBtn(refs.stop);
 refs.start.addEventListener('click', onClickStartChangeBgColor);
 refs.stop.addEventListener('click', onClickStopChangeBgColor);
