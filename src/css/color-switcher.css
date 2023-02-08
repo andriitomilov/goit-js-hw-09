@@ -9,19 +9,7 @@
   justify-content: center;
   gap: 30px;
   width: 100vw;
-  height: 98vh;
+  height: 90vh;
 }
 
-button {
-  font-size: 24px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
 
-p {
-  position: absolute;
-  left: 20px;
-  top: 0;
-}

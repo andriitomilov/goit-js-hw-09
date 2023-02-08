@@ -1,0 +1,43 @@
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  font-size: 30px;
+}
+
+.value {
+  font-size: 45px;
+}
+
+.btn-switcher {
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.calendar {
+  font-size: 20px;
+  padding: 5px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+.btn-timer {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px 15px;
+}
+
+
