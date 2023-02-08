@@ -1,6 +1,7 @@
 // Описаний в документації
 import flatpickr from 'flatpickr';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Timer from './timer';
 // Додатковий імпорт стилів
 import 'flatpickr/dist/themes/dark.css';
 import 'notiflix/dist/notiflix-3.2.6.min.css';
@@ -21,10 +22,16 @@ const disableStartBtn = () => {
 
 const disableInputField = () => {
   refs.inputField.setAttribute('disabled', 'disabled');
-}
+};
 
 const activeStartBtn = () => {
   refs.startBtn.removeAttribute('disabled');
+};
+
+const updateClockFace = userData => {
+  Object.keys(userData).forEach(key => {
+    refs[key].textContent = userData[key];
+  });
 };
 
 const options = {
@@ -37,58 +44,20 @@ const options = {
 
     if (currentDate.getTime() > selectedDates[0].getTime()) {
       Notify.failure('Please choose a date in the future');
+      disableStartBtn();
     } else {
       Notify.success("That's correct date! You may start timer!");
       activeStartBtn();
-      disableInputField();
     }
   },
 };
 
 const calendar = flatpickr('#datetime-picker', options);
 
-class Timer {
-  constructor({ updateUserInterface, disableBtn }) {
-    this.updateUserInterface = updateUserInterface;
-    this.disableBtn = disableBtn;
-  }
-
-  start(userTime) {
-    setInterval(() => {
-      const currentTime = Date.now();
-      const delta = userTime - currentTime;
-      this.updateUserInterface(this.convertMs(delta));
-      this.disableBtn();
-    }, 1000);
-  }
-  convertMs(ms) {
-    const second = 1000;
-    const minute = second * 60;
-    const hour = minute * 60;
-    const day = hour * 24;
-
-    const days = this.addLeadingZero(Math.floor(ms / day));
-
-    const hours = this.addLeadingZero(Math.floor((ms % day) / hour));
-
-    const minutes = this.addLeadingZero(
-      Math.floor(((ms % day) % hour) / minute)
-    );
-
-    const seconds = this.addLeadingZero(
-      Math.floor((((ms % day) % hour) % minute) / second)
-    );
-
-    return { days, hours, minutes, seconds };
-  }
-  addLeadingZero(value) {
-    return String(value).padStart(2, '0');
-  }
-}
-
 const timer = new Timer({
   updateUserInterface: updateClockFace,
   disableBtn: disableStartBtn,
+  disableInput: disableInputField,
 });
 
 const onClickStartTimer = () => {
@@ -147,11 +116,4 @@ Notify.init({
 });
 
 disableStartBtn();
-
 refs.startBtn.addEventListener('click', onClickStartTimer);
-
-function updateClockFace(userData) {
-  Object.keys(userData).forEach(key => {
-    refs[key].textContent = userData[key];
-  });
-}
