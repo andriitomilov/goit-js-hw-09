@@ -1,4 +1,3 @@
-// Описаний в документації
 import flatpickr from 'flatpickr';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Timer from './timer';
@@ -66,7 +65,7 @@ const onClickStartTimer = () => {
 
 Notify.init({
   width: '280px',
-  position: 'right-top', // 'right-top' - 'right-bottom' - 'left-top' - 'left-bottom' - 'center-top' - 'center-bottom' - 'center-center'
+  position: 'center-center', // 'right-top' - 'right-bottom' - 'left-top' - 'left-bottom' - 'center-top' - 'center-bottom' - 'center-center'
   distance: '10px',
   opacity: 1,
   borderRadius: '5px',
@@ -87,7 +86,7 @@ Notify.init({
   fontSize: '13px',
   cssAnimation: true,
   cssAnimationDuration: 400,
-  cssAnimationStyle: 'from-right', // 'fade' - 'zoom' - 'from-right' - 'from-top' - 'from-bottom' - 'from-left'
+  cssAnimationStyle: 'zoom', // 'fade' - 'zoom' - 'from-right' - 'from-top' - 'from-bottom' - 'from-left'
   closeButton: false,
   useIcon: true,
   useFontAwesome: false,
