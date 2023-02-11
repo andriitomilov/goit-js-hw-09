@@ -3,7 +3,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Timer from './timer';
 // Додатковий імпорт стилів
 import 'flatpickr/dist/themes/dark.css';
-import 'notiflix/dist/notiflix-3.2.6.min.css';
+// import 'notiflix/dist/notiflix-3.2.6.min.css';
 import '../css/timer.css';
 
 const refs = {
@@ -65,7 +65,7 @@ const onClickStartTimer = () => {
 
 Notify.init({
   width: '280px',
-  position: 'center-center', // 'right-top' - 'right-bottom' - 'left-top' - 'left-bottom' - 'center-top' - 'center-bottom' - 'center-center'
+  position: 'right-top', // 'right-top' - 'right-bottom' - 'left-top' - 'left-bottom' - 'center-top' - 'center-bottom' - 'center-center'
   distance: '10px',
   opacity: 1,
   borderRadius: '5px',
